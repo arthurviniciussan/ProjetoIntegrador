@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manutenção de Produtos - Archimadeira</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>ARCHIMADEIRA</h2>
+                <p>Painel Administrativo</p>
+            </div>
+
+            <button class="btn-sidebar-novo"> Novo Produto</button>
+
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="#">Visão Geral</a></li>
+                    <li><a href="#">Catálogo & Produtos</a></li>
+                    <li><a href="#">Pedidos</a></li>
+                    <li><a href="#">Clientes</a></li>
+                    <li><a href="#">Configurações</a></li>
+                    <li><a href="#">Suporte</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="btn-sair">Sair</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="top-header">
+                <div class="search-area">
+                    <input type="text" placeholder="Buscar produtos, SKU, coleções ou medidas...">
+                </div>
+                <div class="user-area">
+                    <span class="notification"></span>
+                    <div class="user-info">
+                        <span class="user-name">Arquiteto Curador</span>
+                    </div>
+                    <div class="user-avatar">
+                        <img src="Imagens/avatarArquiteto.jpg" alt="Avatar">
+                    </div>
+                </div>
+            </header>
+
+            <section class="page-header">
+                <div class="page-title-area">
+                    <span class="breadcrumb">PAINEL DE CONTROLE / Gestão do Acervo</span>
+                    <h1>Manutenção de Produtos</h1>
+                    <p>Gerencie o catálogo, níveis de estoque, acabamentos e especificação rápida.</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn-outline">Exportar / Importar CSV</button>
+                    <button class="btn-primary"> Novo Produto</button>
+                </div>
+            </section>
+
+            <section class="summary-cards">
+
+                <div class="card">
+
+                    <div class="card-value">148</div>
+                    <p class="card-subtitle">+6 este mês em 8 coleções</p>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>ESTOQUE BAIXO</h3>
+                    </div>
+                    <div class="card-value alert-text">7</div>
+                    <p class="card-subtitle">Necessita reposição</p>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>PRODUTOS ATIVOS</h3>
+                        <span class="icon-eye">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="card-value">132</div>
+                    <p class="card-subtitle text-highlight">89% com pronta entrega</p>
+                </div>
+            </section>
+
+            <section class="filters-container">
+                <div class="filter-group">
+                    <label>Busca Direta</label>
+                    <input type="text" placeholder="Nome do móvel, SKU ou código...">
+                </div>
+                <div class="filter-group">
+                    <label>Categoria</label>
+                    <select>
+                        <option>Todas as Categorias</option>
+                        <option>Sofás & Poltronas</option>
+                        <option>Quartos & Camas</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Status do Produto</label>
+                    <select>
+                        <option>Todos os Status</option>
+                        <option>Ativo</option>
+                        <option>Inativo</option>
+                    </select>
+                </div>
+                <div class="filter-button">
+                    <button class="btn-dark">Filtrar</button>
+                </div>
+            </section>
+
+            <div class="active-filters">
+                <span>Filtros ativos:</span> <span class="tag">Categoria: Sofás & Poltronas ✖</span> <span
+                    class="tag">Status: Ativo ✖</span>
+            </div>
+
+            <section class="table-container">
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>FOTO</th>
+                                <th>NOME DO MÓVEL & SKU</th>
+                                <th>CATEGORIA</th>
+                                <th>PREÇO VENDA (R$)</th>
+                                <th>ESTOQUE</th>
+                                <th>STATUS</th>
+                                <th>AÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td><img src="Imagens/sofa2lugares.jpeg" alt="Produto 1" class="product-img"></td>
+                                <td>
+                                    <strong>Sofá 2 Lugares Retrátil Reclinável Aramis</strong><br>
+                                    <span class="sku">SKU: SOF-290</span>
+                                </td>
+                                <td>Sofás & Poltronas</td>
+                                <td>R$ 5.900</td>
+                                <td>12 un <span class="badge badge-normal">Normal</span></td>
+                                <td><span class="badge badge-ativo"> Ativo</span></td>
+                                <td class="actions-col">
+                                    <button class="btn-icon"></button>
+                                    <button class="btn-icon"></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td><img src="Imagens/camaNogueira.jpg" alt="Produto 2" class="product-img"></td>
+                                <td>
+                                    <strong>Cama de Casal Minimalista Nogueira</strong><br>
+                                    <span class="sku">SKU: CAM-148</span>
+                                </td>
+                                <td>Quartos & Camas</td>
+                                <td>R$ 4.400</td>
+                                <td>2 un <span class="badge badge-baixo">Baixo</span></td>
+                                <td><span class="badge badge-ativo"> Ativo</span></td>
+                                <td class="actions-col">
+                                    <button class="btn-icon"></button>
+                                    <button class="btn-icon"></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td><img src="Imagens/camaBox.jpeg" alt="Produto 3" class="product-img"></td>
+                                <td>
+                                    <strong>Cama Box Casal 138 Molas Ensacadas</strong><br>
+                                    <span class="sku">SKU: BOX-ENS-138</span>
+                                </td>
+                                <td>Quartos & Camas</td>
+                                <td>R$ 1.500</td>
+                                <td>28 un <span class="badge badge-normal">Normal</span></td>
+                                <td><span class="badge badge-ativo"> Ativo</span></td>
+                                <td class="actions-col">
+                                    <button class="btn-icon"></button>
+                                    <button class="btn-icon"></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td><img src="Imagens/sofa4lugares.jpeg" alt="Produto 4" class="product-img"></td>
+                                <td>
+                                    <strong>Sofá Retrátil 4 Lugares</strong><br>
+                                    <span class="sku">SKU: SOF-CAC-348</span>
+                                </td>
+                                <td>Sofás & Poltronas</td>
+                                <td>R$ 5.450</td>
+                                <td>1 un <span class="badge badge-baixo">Baixo</span></td>
+                                <td><span class="badge badge-ativo"> Ativo</span></td>
+                                <td class="actions-col">
+                                    <button class="btn-icon"></button>
+                                    <button class="btn-icon"></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td><img src="Imagens/mesa.jpg" alt="Produto 5" class="product-img"></td>
+                                <td>
+                                    <strong>Mesa Redonda de Jantar Freijó Centenário</strong><br>
+                                    <span class="sku">SKU: MES-FRJ-160</span>
+                                </td>
+                                <td>Jantar & Cadeiras</td>
+                                <td>R$ 7.820</td>
+                                <td>0 un <span class="badge badge-esgotado">Esgotado</span></td>
+                                <td><span class="badge badge-inativo"> Inativo</span></td>
+                                <td class="actions-col">
+                                    <button class="btn-icon"></button>
+                                    <button class="btn-icon"></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="pagination">
+                <span class="page-info">Página 1 de 15 (150 itens no total)</span>
+                <div class="page-buttons">
+                    <button class="btn-page">Anterior</button>
+                    <button class="btn-page active">1</button>
+                    <button class="btn-page">2</button>
+                    <button class="btn-page">3</button>
+                    <span class="dots">...</span>
+                    <button class="btn-page">15</button>
+                    <button class="btn-page">Próximo</button>
+                </div>
+            </section>
+
+            <section class="info-boxes">
+                <div class="info-box">
+                    <span class="info-icon"></span>
+                    <div>
+                        <h4>Edição Rápida de Preço Direto na Tabela</h4>
+                        <p>Altere os valores na própria linha e pressione Enter para atualizar automaticamente.</p>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <span class="info-icon"></span>
+                    <div>
+                        <h4>Sincronização de Marcenaria Sob Medida</h4>
+                        <p>Produtos marcados com este selo possuem tempo de produção customizado de acordo com o pedido.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ARCHIMADEIRA</h3>
+                <p>© 2025 ArchiMadeira Marcenaria & Design de Interiores.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Termos de Serviço</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Sustentabilidade & Madeira Certificada</a>
+                <a href="#">Atendimento Corporativo</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
