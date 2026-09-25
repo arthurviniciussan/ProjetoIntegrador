@@ -1,0 +1,110 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-cadastro',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './cadastro.component.html',
+  styleUrl: './cadastro.component.css',
+})
+export class CadastroComponent {
+
+  
+  tipo = 'PF';
+
+  
+  nome = '';
+  email = '';
+  documento = '';
+  celular = '';
+  nascimento = '';
+
+  
+  cep = '';
+  rua = '';
+  numero = '';
+  complemento = '';
+  bairro = '';
+  cidade = '';
+
+  // Senha
+  senha = '';
+  confirmarSenha = '';
+  mostrarSenha = false;
+  mostrarConfirmar = false;
+
+  
+  aceitouTermos = false;
+  querOfertas = true;
+
+  
+  mensagemErro = '';
+
+
+  temMinimo() {
+    return this.senha.length >= 8;
+  }
+
+  temMaiuscula() {
+    return /[A-Z]/.test(this.senha);
+  }
+
+  temNumeroOuSimbolo() {
+    return /[0-9!@#$%&*]/.test(this.senha);
+  }
+
+  buscarCep() {
+    let cepLimpo = this.cep.replace('-', '');
+
+    if (cepLimpo.length != 8) {
+      alert('Digite os 8 números do CEP.');
+      return;
+    }
+
+    fetch('https://viacep.com.br/ws/' + cepLimpo + '/json/')
+      .then(resposta => resposta.json())
+      .then(dados => {
+        if (dados.erro) {
+          alert('CEP não encontrado.');
+        } else {
+          this.rua = dados.logradouro;
+          this.bairro = dados.bairro;
+          this.cidade = dados.localidade;
+        }
+      });
+  }
+
+
+  finalizar() {
+    this.mensagemErro = '';
+
+    if (this.nome == '' || this.email == '' || this.documento == '' || this.celular == '') {
+      this.mensagemErro = 'Preencha todos os dados pessoais.';
+      return;
+    }
+
+    if (this.cep == '' || this.rua == '' || this.numero == '' || this.bairro == '' || this.cidade == '') {
+      this.mensagemErro = 'Preencha o endereço de entrega.';
+      return;
+    }
+
+    if (!this.temMinimo() || !this.temMaiuscula() || !this.temNumeroOuSimbolo()) {
+      this.mensagemErro = 'A senha não cumpre os requisitos de segurança.';
+      return;
+    }
+
+    if (this.senha != this.confirmarSenha) {
+      this.mensagemErro = 'As senhas não são iguais.';
+      return;
+    }
+
+    if (!this.aceitouTermos) {
+      this.mensagemErro = 'Você precisa aceitar os Termos de Uso.';
+      return;
+    }
+
+    alert('Cadastro realizado com sucesso!');
+  }
+}
