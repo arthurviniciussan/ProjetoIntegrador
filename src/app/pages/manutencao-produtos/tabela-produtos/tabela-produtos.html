@@ -1,0 +1,41 @@
+<section class="table-container">
+  <div class="table-responsive">
+    <table>
+      <thead>
+        <tr>
+          <th><input type="checkbox" aria-label="Selecionar todos"></th>
+          <th>FOTO</th>
+          <th>NOME DO MÓVEL &amp; SKU</th>
+          <th>CATEGORIA</th>
+          <th>PREÇO VENDA (R$)</th>
+          <th>ESTOQUE</th>
+          <th>STATUS</th>
+          <th>AÇÕES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtos">
+          <td><input type="checkbox" [attr.aria-label]="'Selecionar ' + produto.nome"></td>
+          <td><img [src]="produto.imagem" [alt]="produto.nome" class="product-img"></td>
+          <td><strong>{{ produto.nome }}</strong><br><span class="sku">SKU: {{ produto.sku }}</span></td>
+          <td>{{ produto.categoria }}</td>
+          <td>R$ {{ formatarPreco(produto.preco) }}</td>
+          <td>
+            {{ produto.estoque }} un
+            <span class="badge" [ngClass]="produto.estoque === 0 ? 'badge-esgotado' : produto.estoque <= 2 ? 'badge-baixo' : 'badge-normal'">
+              {{ produto.estoque === 0 ? 'Esgotado' : produto.estoque <= 2 ? 'Baixo' : 'Normal' }}
+            </span>
+          </td>
+          <td><span class="badge" [ngClass]="produto.status === 'Ativo' ? 'badge-ativo' : 'badge-inativo'">{{ produto.status }}</span></td>
+          <td class="actions-col">
+            <button class="btn-icon" type="button" aria-label="Editar produto">&#9998;</button>
+            <button class="btn-icon" type="button" aria-label="Mais ações">&#8942;</button>
+          </td>
+        </tr>
+        <tr *ngIf="produtos.length === 0">
+          <td colspan="8" class="empty-state">Nenhum produto corresponde aos filtros.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

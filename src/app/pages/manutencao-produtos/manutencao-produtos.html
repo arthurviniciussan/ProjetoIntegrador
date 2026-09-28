@@ -1,0 +1,52 @@
+<app-menu></app-menu>
+
+<div class="dashboard-container">
+  <aside class="sidebar">
+    <div class="sidebar-header"><h2>ARCHIMADEIRA</h2><p>Painel Administrativo</p></div>
+    <button class="btn-sidebar-novo" type="button">Novo Produto</button>
+    <nav class="sidebar-menu" aria-label="Navegação administrativa">
+      <ul>
+        <li><a routerLink="/cadastro">Visão Geral</a></li>
+        <li><a routerLink="/manutencao-produtos" class="active">Catálogo &amp; Produtos</a></li>
+        <li><a routerLink="/carrinho">Pedidos</a></li>
+        <li><a href="#">Clientes</a></li><li><a href="#">Configurações</a></li><li><a href="#">Suporte</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer"><a href="#" class="btn-sair">Sair</a></div>
+  </aside>
+
+  <main class="main-content">
+    <header class="top-header">
+      <div class="search-area"><label class="acessivel" for="busca-global">Buscar no catálogo</label><input id="busca-global" type="search" [(ngModel)]="busca" (input)="aplicarFiltros()" placeholder="Buscar produtos, SKU, coleções ou medidas..."></div>
+      <div class="user-area"><span class="notification" aria-label="Notificações"></span><div class="user-info"><span class="user-name">Arquiteto Curador</span></div><div class="user-avatar"><img src="/assets/images/avatarArquiteto.jpg" alt="Avatar do arquiteto curador"></div></div>
+    </header>
+
+    <section class="page-header">
+      <div class="page-title-area"><span class="breadcrumb">PAINEL DE CONTROLE / Gestão do Acervo</span><h1>Manutenção de Produtos</h1><p>Gerencie o catálogo, níveis de estoque, acabamentos e especificação rápida.</p></div>
+      <div class="page-actions"><button class="btn-outline" type="button">Exportar / Importar CSV</button><button class="btn-primary" type="button">Novo Produto</button></div>
+    </section>
+
+    <section class="summary-cards" aria-label="Resumo do catálogo">
+      <div class="card"><div class="card-header"><h3>PRODUTOS NO CATÁLOGO</h3></div><div class="card-value">{{ produtos.length }}</div><p class="card-subtitle">+6 este mês em 8 coleções</p></div>
+      <div class="card"><div class="card-header"><h3>ESTOQUE BAIXO</h3></div><div class="card-value alert-text">{{ estoqueBaixo }}</div><p class="card-subtitle">Necessita reposição</p></div>
+      <div class="card"><div class="card-header"><h3>PRODUTOS ATIVOS <span class="icon-eye" aria-hidden="true">&#9673;</span></h3></div><div class="card-value">{{ produtosAtivos }}</div><p class="card-subtitle text-highlight">89% com pronta entrega</p></div>
+    </section>
+
+    <section class="filters-container" aria-label="Filtros de produtos">
+      <div class="filter-group"><label for="filtro-busca">Busca Direta</label><input id="filtro-busca" type="search" [(ngModel)]="busca" placeholder="Nome do móvel, SKU ou código..."></div>
+      <div class="filter-group"><label for="filtro-categoria">Categoria</label><select id="filtro-categoria" [(ngModel)]="categoriaSelecionada"><option value="">Todas as Categorias</option><option>Sofás &amp; Poltronas</option><option>Quartos &amp; Camas</option><option>Jantar &amp; Cadeiras</option></select></div>
+      <div class="filter-group"><label for="filtro-status">Status do Produto</label><select id="filtro-status" [(ngModel)]="statusSelecionado"><option value="">Todos os Status</option><option>Ativo</option><option>Inativo</option></select></div>
+      <div class="filter-button"><button class="btn-dark" type="button" (click)="aplicarFiltros()">Filtrar</button></div>
+    </section>
+
+    <div class="active-filters" *ngIf="filtrosAtivos.length"><span>Filtros ativos:</span><button type="button" class="tag" *ngFor="let filtro of filtrosAtivos" (click)="filtro.startsWith('Categoria') ? limparFiltroCategoria() : limparFiltroStatus()">{{ filtro }} &times;</button></div>
+
+    <app-tabela-produtos [produtos]="produtosFiltrados"></app-tabela-produtos>
+
+    <section class="pagination"><span class="page-info">Página 1 de 15 ({{ produtos.length }} itens no total)</span><div class="page-buttons"><button class="btn-page" type="button" disabled>Anterior</button><button class="btn-page active" type="button">1</button><button class="btn-page" type="button">2</button><button class="btn-page" type="button">3</button><span class="dots">...</span><button class="btn-page" type="button">15</button><button class="btn-page" type="button">Próximo</button></div></section>
+
+    <section class="info-boxes"><div class="info-box"><span class="info-icon" aria-hidden="true">&#9998;</span><div><h4>Edição Rápida de Preço Direto na Tabela</h4><p>Altere os valores na própria linha e pressione Enter para atualizar automaticamente.</p></div></div><div class="info-box"><span class="info-icon" aria-hidden="true">&#9881;</span><div><h4>Sincronização de Marcenaria Sob Medida</h4><p>Produtos marcados com este selo possuem tempo de produção customizado de acordo com o pedido.</p></div></div></section>
+  </main>
+</div>
+
+<app-footer></app-footer>
