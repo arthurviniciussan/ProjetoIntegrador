@@ -17,7 +17,7 @@ import { ResumoPedidoComponent } from './resumo-pedido/resumo-pedido';
   styleUrl: './carrinho.css'
 })
 export class CarrinhoComponent {
-  readonly cuponsDisponiveis: Record<string, number> = {
+  readonly cuponsDisponiveis: Partial<Record<string, number>> = {
     DESIGN10: 10,
     ARQUITETO15: 15,
     PRIMEIRACOMPRA: 5

@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './menu.html',
   styleUrl: './menu.css'
 })
-export class MenuComponent {}
+export class MenuComponent {
+  logo = '/assets/icons/chair-logo.png';
+}

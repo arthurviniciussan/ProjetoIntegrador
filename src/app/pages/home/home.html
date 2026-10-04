@@ -1,0 +1,141 @@
+<app-menu></app-menu>
+
+<main class="home container">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__content">
+      <span class="hero__tag">Coleção exclusiva</span>
+      <h1 id="hero-title">Móveis de qualidade para viver melhor</h1>
+      <p>Design autoral, madeira certificada e acabamento pensado para acompanhar a sua casa por muitos anos.</p>
+      <div class="hero__actions">
+        <a class="button button--light" href="#catalogo">Explorar catálogo</a>
+        <span>Até 40% OFF em peças selecionadas</span>
+      </div>
+    </div>
+    <div class="hero__media">
+      <img class="hero__image" ngSrc="/assets/images/sofa2lugares.jpeg" alt="Sofá retrátil em uma sala contemporânea" fill priority>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="ambientes-title">
+    <header class="section__header">
+      <div>
+        <p class="eyebrow">Encontre seu espaço</p>
+        <h2 id="ambientes-title">Navegue por ambientes</h2>
+        <p>Soluções para cada canto da casa, com marcenaria e conforto.</p>
+      </div>
+    </header>
+    <div class="rooms">
+      @for (ambiente of ambientes; track ambiente.categoria) {
+        <a class="room" href="#catalogo" (click)="selecionarCategoria(ambiente.categoria)">
+          <span class="room__media">
+            <img [ngSrc]="ambiente.imagem" [alt]="ambiente.nome" fill>
+          </span>
+          <span class="room__text">
+            <strong>{{ ambiente.nome }}</strong>
+            <small>{{ ambiente.detalhe }}</small>
+          </span>
+          <span class="room__arrow" aria-hidden="true">&#8594;</span>
+        </a>
+      }
+    </div>
+  </section>
+
+  <section class="section" id="catalogo" aria-labelledby="catalogo-title">
+    <header class="section__header section__header--catalog">
+      <div>
+        <p class="eyebrow">Peças selecionadas</p>
+        <h2 id="catalogo-title">Destaques da loja</h2>
+        <p>Produtos para transformar a rotina e a atmosfera da sua casa.</p>
+      </div>
+      <div class="catalog-tools">
+        @if (categoriaSelecionada()) {
+          <button class="text-button" type="button" (click)="selecionarCategoria('')">Limpar categoria: {{ categoriaSelecionada() }}</button>
+        }
+        <label class="sort">
+          <span>Ordenar por</span>
+          <select [value]="ordenacao()" (change)="alterarOrdenacao($event)">
+            <option value="popular">Mais populares</option>
+            <option value="menor">Menor preço</option>
+            <option value="maior">Maior preço</option>
+          </select>
+        </label>
+      </div>
+    </header>
+
+    <div class="products" aria-live="polite">
+      @for (produto of produtosVisiveis(); track produto.id) {
+        <article class="product">
+          <div class="product__media">
+            <img class="product__image" [ngSrc]="produto.imagem" [alt]="produto.nome" fill>
+            <span class="badge" [class.badge--dark]="produto.seloEscuro">{{ produto.selo }}</span>
+            <button class="favorite" type="button"
+                    [class.favorite--active]="favoritos().has(produto.id)"
+                    [attr.aria-pressed]="favoritos().has(produto.id)"
+                    [attr.aria-label]="favoritos().has(produto.id) ? 'Remover dos favoritos' : 'Adicionar aos favoritos'"
+                    (click)="alternarFavorito(produto.id)">
+              <span aria-hidden="true">{{ favoritos().has(produto.id) ? '♥' : '♡' }}</span>
+            </button>
+          </div>
+          <div class="product__body">
+            <p class="rating" [attr.aria-label]="produto.estrelas + ' de 5 estrelas, ' + produto.avaliacoes + ' avaliações'">
+              <span aria-hidden="true">{{ '★'.repeat(produto.estrelas) }}{{ '☆'.repeat(5 - produto.estrelas) }}</span>
+              <small>({{ produto.avaliacoes }})</small>
+            </p>
+            <h3>{{ produto.nome }}</h3>
+            <p class="product__old">De: {{ formatarMoeda(produto.precoAnterior) }}</p>
+            <p class="product__price">{{ formatarMoeda(produto.preco) }} <small>à vista</small></p>
+            <p class="product__installments">ou 10x de {{ formatarMoeda(produto.preco / 10) }} sem juros</p>
+            <button class="button button--dark" type="button" (click)="verDetalhes(produto)">Ver detalhes</button>
+          </div>
+        </article>
+      } @empty {
+        <p class="empty-state">Nenhum produto encontrado nesta categoria.</p>
+      }
+    </div>
+
+    <div class="load-more">
+      <button class="button button--outline" type="button" [disabled]="maisProdutosCarregados()" (click)="carregarMaisProdutos()">
+        {{ maisProdutosCarregados() ? 'Todos os produtos carregados' : 'Carregar mais produtos' }}
+      </button>
+    </div>
+  </section>
+
+  <section class="benefits" aria-label="Benefícios da loja">
+    <article class="benefit"><span class="benefit__mark" aria-hidden="true">FSC</span><div><h3>Madeira certificada</h3><p>Manejo responsável com origem rastreável.</p></div></article>
+    <article class="benefit"><span class="benefit__mark" aria-hidden="true">7d</span><div><h3>Entrega garantida</h3><p>Montagem especializada e entrega acompanhada.</p></div></article>
+    <article class="benefit"><span class="benefit__mark" aria-hidden="true">10x</span><div><h3>Até 10x sem juros</h3><p>Opções de pagamento para a sua compra.</p></div></article>
+    <article class="benefit"><span class="benefit__mark" aria-hidden="true">SSL</span><div><h3>Compra segura</h3><p>Seus dados protegidos durante a navegação.</p></div></article>
+  </section>
+
+  <section class="newsletter" aria-labelledby="newsletter-title">
+    <div class="newsletter__copy">
+      <p class="eyebrow">Clube de vantagens</p>
+      <h2 id="newsletter-title">Ideias, tendências e novidades para sua casa</h2>
+      <p>Receba novidades e inspirações da Archimadeira no seu e-mail.</p>
+    </div>
+    <form class="newsletter__form" (ngSubmit)="inscreverNewsletter($event)">
+      <label class="visually-hidden" for="newsletter-email">Seu e-mail</label>
+      <input id="newsletter-email" type="email" name="email" autocomplete="email" placeholder="Seu melhor e-mail" required
+             [ngModel]="emailNewsletter()" (ngModelChange)="emailNewsletter.set($event)">
+      <button class="button button--accent" type="submit">Cadastrar</button>
+      @if (mensagemNewsletter()) {
+        <p class="newsletter__message" role="status">{{ mensagemNewsletter() }}</p>
+      }
+    </form>
+  </section>
+</main>
+
+@if (produtoSelecionado(); as produto) {
+  <div class="details-backdrop" (click)="fecharDetalhes()">
+    <section class="details-dialog" role="dialog" aria-modal="true" [attr.aria-labelledby]="'details-title-' + produto.id" (click)="$event.stopPropagation()">
+      <button class="details-dialog__close" type="button" aria-label="Fechar detalhes" (click)="fecharDetalhes()">&times;</button>
+      <p class="eyebrow">{{ produto.categoria }}</p>
+      <h2 [id]="'details-title-' + produto.id">{{ produto.nome }}</h2>
+      <p class="details-dialog__rating">{{ produto.estrelas }} de 5 estrelas · {{ produto.avaliacoes }} avaliações</p>
+      <p class="details-dialog__price">{{ formatarMoeda(produto.preco) }} <small>à vista</small></p>
+      <p>ou 10x de {{ formatarMoeda(produto.preco / 10) }} sem juros</p>
+    </section>
+  </div>
+}
+
+<app-footer></app-footer>

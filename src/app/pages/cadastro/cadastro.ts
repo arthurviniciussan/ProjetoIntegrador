@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../../shared/footer/footer';
+import { MenuComponent } from '../../shared/menu/menu';
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [CommonModule, FormsModule, FooterComponent],
+  imports: [CommonModule, FormsModule, MenuComponent, FooterComponent],
   templateUrl: './cadastro.html',
   styleUrl: './cadastro.css',
 })
@@ -15,14 +16,14 @@ export class CadastroComponent {
 
   tipo = 'PF';
 
-
+  // Dados da pessoa
   nome = '';
   email = '';
   documento = '';
   celular = '';
   nascimento = '';
 
-
+  // Endereco
   cep = '';
   rua = '';
   numero = '';

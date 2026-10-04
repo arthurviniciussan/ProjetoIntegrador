@@ -1,26 +1,18 @@
 <header class="cabecalho">
   <div class="container cabecalho__conteudo">
-    <a routerLink="/carrinho" class="logo">ARCHIMADEIRA</a>
-    <form class="busca" role="search" (submit)="$event.preventDefault()">
-      <span class="busca__icone" aria-hidden="true">&#9906;</span>
-      <label class="acessivel" for="campo-busca">Buscar produtos</label>
-      <input type="search" id="campo-busca" class="busca__campo" placeholder="Buscar mobília e peças...">
-    </form>
-    <nav class="menu" aria-label="Categorias">
-      <ul class="menu__lista">
-        <li><a routerLink="/carrinho" class="menu__link">Catálogo</a></li>
-        <li><a href="#" class="menu__link">Salas</a></li>
-        <li><a href="#" class="menu__link">Quartos</a></li>
-        <li><a href="#" class="menu__link">Escritório</a></li>
-        <li><a href="#" class="menu__link">Jantar</a></li>
-        <li><a routerLink="/manutencao-produtos" class="menu__link">Gestão</a></li>
-      </ul>
+    <a routerLink="/" class="marca" aria-label="Archimadeira, página inicial">
+      <img [src]="logo" alt="">
+      <span class="logo">ARCHIMADEIRA</span>
+    </a>
+
+    <nav class="menu" aria-label="Navegação principal">
+      <a routerLink="/carrinho" routerLinkActive="menu__link--ativo" class="menu__link">Carrinho</a>
+      <a routerLink="/manutencao-produtos" routerLinkActive="menu__link--ativo" class="menu__link">Manutenção de produtos</a>
     </nav>
+
     <div class="cabecalho__acoes">
-      <button type="button" class="botao-icone" aria-label="Lista de desejos">&#9825;</button>
-      <button type="button" class="botao-icone" aria-label="Comparar peças">&#9776;</button>
-      <a href="#" class="cabecalho__entrar">Entrar</a>
-      <a href="#" class="botao botao--escuro">Cadastre-se</a>
+      <a href="#" class="cabecalho__entrar" aria-label="Entrar, página de login em construção">Entrar</a>
+      <a routerLink="/cadastro" class="botao botao--escuro">Cadastre-se</a>
     </div>
   </div>
 </header>
