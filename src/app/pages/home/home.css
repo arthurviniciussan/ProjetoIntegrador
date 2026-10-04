@@ -1,3 +1,4 @@
+/* Estrutura geral da página inicial */
 :host {
   display: block;
 }
@@ -6,6 +7,9 @@
   padding-top: 24px;
   padding-bottom: 48px;
 }
+/* ========== */
+
+/* Destaque principal da página */
 .hero {
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
@@ -69,6 +73,9 @@
 .hero__image {
   object-fit: cover;
 }
+/* ========== */
+
+/* Títulos e navegação por ambientes */
 .section {
   margin-top: 42px;
 }
@@ -79,8 +86,7 @@
   gap: 20px;
   margin-bottom: 18px;
 }
-.section__header h2,
-.newsletter h2 {
+.section__header h2 {
   margin: 5px 0;
   font-family: 'Instrument Serif', Georgia, serif;
   font-size: 28px;
@@ -135,36 +141,9 @@
   bottom: 18px;
   color: var(--cor-madeira);
 }
-.section__header--catalog {
-  align-items: center;
-}
-.catalog-tools {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: end;
-  gap: 14px;
-}
-.text-button {
-  color: var(--cor-madeira);
-  font-size: 12px;
-  text-align: left;
-}
-.sort {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--cor-texto-suave);
-  font-size: 12px;
-}
-.sort select {
-  max-width: 190px;
-  padding: 8px 10px;
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--raio);
-  background: var(--cor-superficie);
-  color: var(--cor-texto);
-}
+/* ========== */
+
+/* Cartões de produtos */
 .products {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -201,37 +180,11 @@
 .badge--dark {
   background: var(--cor-escura);
 }
-.favorite {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  display: grid;
-  width: 34px;
-  aspect-ratio: 1;
-  place-items: center;
-  border: 1px solid var(--cor-borda);
-  border-radius: 50%;
-  background: var(--cor-superficie);
-  color: var(--cor-texto);
-  font-size: 18px;
-}
-.favorite--active {
-  color: var(--cor-erro);
-}
 .product__body {
   display: flex;
   flex: 1;
   flex-direction: column;
   padding: 12px;
-}
-.rating {
-  margin: 0 0 8px;
-  color: var(--cor-madeira);
-  font-size: 11px;
-}
-.rating small {
-  margin-left: 5px;
-  color: var(--cor-texto-suave);
 }
 .product h3 {
   min-height: 38px;
@@ -255,11 +208,6 @@
   color: var(--cor-madeira);
   font-size: 10px;
 }
-.product__installments {
-  margin: 0 0 12px;
-  color: var(--cor-texto-suave);
-  font-size: 10px;
-}
 .button {
   display: inline-flex;
   min-height: 40px;
@@ -272,39 +220,13 @@
   font-weight: 700;
   text-align: center;
 }
-.button--dark {
-  width: 100%;
-  margin-top: auto;
-  background: var(--cor-escura);
-  color: #fff;
-}
 .button--light {
   background: #fff;
   color: var(--cor-escura);
 }
-.button--outline {
-  border-color: var(--cor-escura);
-  background: var(--cor-superficie);
-  color: var(--cor-escura);
-}
-.button--outline:disabled {
-  cursor: default;
-  opacity: 0.6;
-}
-.button--accent {
-  background: var(--cor-madeira);
-  color: #fff;
-}
-.load-more {
-  margin-top: 22px;
-  text-align: center;
-}
-.empty-state {
-  grid-column: 1 / -1;
-  padding: 32px;
-  color: var(--cor-texto-suave);
-  text-align: center;
-}
+/* ========== */
+
+/* Benefícios da loja */
 .benefits {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -341,106 +263,16 @@
   font-size: 10px;
   line-height: 1.5;
 }
-.newsletter {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-  margin-top: 28px;
-  padding: 26px;
-  border-radius: var(--raio);
-  background: var(--cor-fundo-etapas);
-}
-.newsletter__copy {
-  max-width: 500px;
-}
-.newsletter h2 {
-  font-size: 25px;
-}
-.newsletter__copy > p:last-child {
-  margin: 8px 0 0;
-  color: var(--cor-texto-suave);
-  font-size: 12px;
-}
-.newsletter__form {
-  display: grid;
-  grid-template-columns: minmax(180px, 1fr) auto;
-  gap: 8px;
-  width: min(100%, 430px);
-}
-.newsletter__form input {
-  min-width: 0;
-  padding: 10px 12px;
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--raio);
-  background: var(--cor-superficie);
-}
-.newsletter__message {
-  grid-column: 1 / -1;
-  margin: 0;
-  color: var(--cor-texto-suave);
-  font-size: 11px;
-}
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-}
-.details-backdrop {
-  position: fixed;
-  z-index: 20;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  padding: 20px;
-  background: rgb(0 0 0 / 55%);
-}
-.details-dialog {
-  position: relative;
-  width: min(100%, 480px);
-  padding: 28px;
-  border-radius: var(--raio);
-  background: var(--cor-superficie);
-  box-shadow: var(--sombra-suave);
-}
-.details-dialog h2 {
-  max-width: 90%;
-  margin: 8px 0;
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-size: 28px;
-}
-.details-dialog__close {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  width: 36px;
-  aspect-ratio: 1;
-  border: 1px solid var(--cor-borda);
-  border-radius: 50%;
-  background: var(--cor-superficie);
-  font-size: 22px;
-}
-.details-dialog__rating {
-  color: var(--cor-texto-suave);
-  font-size: 12px;
-}
-.details-dialog__price {
-  margin: 16px 0 4px;
-  font-size: 22px;
-  font-weight: 700;
-}
-.details-dialog__price small {
-  color: var(--cor-madeira);
-  font-size: 12px;
-}
+/* ========== */
+
+/* Foco visível para navegação por teclado */
 :where(button, a, input, select):focus-visible {
   outline: 2px solid var(--cor-madeira);
   outline-offset: 3px;
 }
+/* ========== */
 
+/* Ajustes do catálogo para telas médias */
 @media (max-width: 1050px) {
   .products {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -450,7 +282,9 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+/* ========== */
 
+/* Ajustes da página inicial para celulares */
 @media (max-width: 680px) {
   .home {
     padding-top: 16px;
@@ -467,14 +301,6 @@
     height: 210px;
   }
   .section__header,
-  .section__header--catalog,
-  .newsletter {
-    align-items: stretch;
-    flex-direction: column;
-  }
-  .catalog-tools {
-    justify-content: start;
-  }
   .products {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
@@ -488,14 +314,10 @@
   .benefits {
     padding: 14px;
   }
-  .newsletter {
-    padding: 20px;
-  }
-  .newsletter__form {
-    width: 100%;
-  }
 }
+/* ========== */
 
+/* Ajustes de layout para telas estreitas */
 @media (max-width: 420px) {
   .rooms,
   .benefits {
@@ -507,11 +329,9 @@
   .product__media {
     aspect-ratio: 1.6;
   }
-  .newsletter__form {
-    grid-template-columns: 1fr;
-  }
   .hero__actions {
     align-items: flex-start;
     flex-direction: column;
   }
 }
+/* ========== */

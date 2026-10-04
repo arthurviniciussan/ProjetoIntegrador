@@ -1,3 +1,4 @@
+/* Área externa e rolagem da tabela */
 :host {
   display: block;
 }
@@ -10,7 +11,9 @@
   width: 100%;
   overflow-x: auto;
 }
+/* ========== */
 
+/* Cabeçalho e linhas da tabela */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -35,7 +38,9 @@ th {
 td strong {
   font-size: 13px;
 }
+/* ========== */
 
+/* Imagens e identificação dos produtos */
 .product-img {
   width: 70px;
   height: 62px;
@@ -47,20 +52,9 @@ td strong {
   color: var(--cor-texto-suave);
   font-size: 12px;
 }
+/* ========== */
 
-.actions-col {
-  white-space: nowrap;
-}
-
-.btn-icon {
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--cor-borda);
-  border-radius: 4px;
-  color: var(--cor-madeira);
-  cursor: pointer;
-}
-
+/* Indicadores de status */
 .badge {
   display: inline-block;
   margin-left: 4px;
@@ -71,30 +65,11 @@ td strong {
   white-space: nowrap;
 }
 
-.badge-normal {
-  background: #e7f0e8;
-  color: #356345;
-}
-
-.badge-baixo {
-  background: #f8ebdb;
-  color: #9a5b21;
-}
-
-.badge-esgotado {
-  background: #f5e2df;
-  color: #a33c31;
-}
-
 .badge-ativo {
   color: #356345;
 }
 
-.badge-inativo,
-.empty-state {
+.badge-inativo {
   color: var(--cor-texto-suave);
 }
-
-.empty-state {
-  text-align: center;
-}
+/* ========== */

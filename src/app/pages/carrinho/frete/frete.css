@@ -1,3 +1,4 @@
+/* Cartão e título do cálculo de frete */
 .cartao {
   padding: 24px;
   box-shadow: var(--sombra-suave);
@@ -20,7 +21,9 @@
   color: var(--cor-texto-suave);
   font-size: 12px;
 }
+/* ========== */
 
+/* Campo de endereço e botão de busca */
 .linha-formulario {
   display: flex;
   gap: 10px;
@@ -59,7 +62,9 @@
   background: var(--cor-escura);
   color: #fff;
 }
+/* ========== */
 
+/* Opções de entrega */
 .opcoes-frete {
   display: grid;
   gap: 10px;
@@ -111,3 +116,4 @@
 .destaque-gratis {
   color: var(--cor-madeira);
 }
+/* ========== */

@@ -1,3 +1,4 @@
+/* Posicionamento do resumo do pedido */
 :host {
   position: sticky;
   top: 24px;
@@ -13,7 +14,9 @@
   font-size: 16px;
   font-weight: 700;
 }
+/* ========== */
 
+/* Linhas de valores e total do pedido */
 .resumo__cabecalho {
   display: flex;
   align-items: baseline;
@@ -81,7 +84,9 @@
   font-size: 11px;
   text-align: right;
 }
+/* ========== */
 
+/* Destaque do pagamento por Pix */
 .pix {
   margin: 16px 0;
   padding: 12px 14px;
@@ -110,7 +115,9 @@
   color: var(--cor-madeira);
   font-size: 11px;
 }
+/* ========== */
 
+/* Botão de finalização e aviso de segurança */
 .botao--principal {
   display: flex;
   align-items: center;
@@ -135,7 +142,9 @@
   font-size: 11px;
   text-align: center;
 }
+/* ========== */
 
+/* Benefícios e garantias da compra */
 .garantias {
   display: grid;
   gap: 14px;
@@ -169,15 +178,20 @@
   border-radius: 50%;
   background: var(--cor-fundo);
 }
+/* ========== */
 
+/* Ajustes do resumo para telas menores */
 @media (max-width: 900px) {
   :host {
     position: static;
   }
 }
+/* ========== */
 
+/* Ajustes do resumo para celulares */
 @media (max-width: 620px) {
   .resumo {
     padding: 18px;
   }
 }
+/* ========== */

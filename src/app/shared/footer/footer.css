@@ -1,3 +1,4 @@
+/* Fundo e conteúdo principal do rodapé */
 .rodape {
   background: var(--cor-rodape);
   color: #d8ccc1;
@@ -27,7 +28,9 @@
   font-size: 12px;
   line-height: 1.6;
 }
+/* ========== */
 
+/* Links do rodapé */
 .rodape__links {
   display: grid;
   grid-template-columns: repeat(2, auto);
@@ -40,7 +43,9 @@
   color: #fff;
   text-decoration: underline;
 }
+/* ========== */
 
+/* Faixa inferior do rodapé */
 .rodape__base {
   display: flex;
   flex-wrap: wrap;
@@ -52,9 +57,12 @@
   color: #a3948a;
   font-size: 11px;
 }
+/* ========== */
 
+/* Ajuste dos links em telas menores */
 @media (max-width: 620px) {
   .rodape__links {
     grid-template-columns: 1fr;
   }
 }
+/* ========== */

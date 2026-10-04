@@ -1,3 +1,4 @@
+/* Botões e links do carrinho */
 button {
   color: inherit;
   background: none;
@@ -15,6 +16,9 @@ button {
 .link--perigo {
   color: #c0392b;
 }
+/* ========== */
+
+/* Indicador de etapas da compra */
 .etapas {
   background: var(--cor-fundo-etapas);
   border-bottom: 1px solid var(--cor-borda);
@@ -58,6 +62,9 @@ button {
   border-color: var(--cor-madeira);
   color: #fff;
 }
+/* ========== */
+
+/* Título e estrutura do conteúdo */
 .conteudo {
   padding-top: 36px;
   padding-bottom: 48px;
@@ -96,6 +103,9 @@ button {
   font-size: 16px;
   font-weight: 700;
 }
+/* ========== */
+
+/* Lista de itens e ferramentas do carrinho */
 .carrinho__cabecalho {
   display: flex;
   flex-wrap: wrap;
@@ -126,12 +136,18 @@ button {
   gap: 24px;
   align-items: start;
 }
+/* ========== */
+
+/* Ajustes do carrinho para telas menores */
 @media (max-width: 900px) {
   .grade,
   .grade-utilidades {
     grid-template-columns: 1fr;
   }
 }
+/* ========== */
+
+/* Ajustes do carrinho para celulares */
 @media (max-width: 620px) {
   .conteudo__titulo h1 {
     font-size: 28px;
@@ -146,3 +162,4 @@ button {
     margin-left: 4px;
   }
 }
+/* ========== */
