@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { FooterComponent } from '../../shared/footer/footer';
 import { MenuComponent } from '../../shared/menu/menu';
+import { SidebarComponent } from '../../shared/sidebar/sidebar';
 import { TabelaProdutosComponent } from './tabela-produtos/tabela-produtos';
 import { Produto } from './produto.model';
 
 @Component({
   selector: 'app-manutencao-produtos',
   standalone: true,
-  imports: [RouterLink, MenuComponent, FooterComponent, TabelaProdutosComponent],
+  imports: [MenuComponent, SidebarComponent, FooterComponent, TabelaProdutosComponent],
   templateUrl: './manutencao-produtos.html',
   styleUrl: './manutencao-produtos.css'
 })

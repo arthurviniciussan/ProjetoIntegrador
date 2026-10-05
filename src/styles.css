@@ -82,6 +82,79 @@ img {
 	border-radius: var(--raio);
 }
 
+/* Modal compartilhado para operações com clientes */
+:where(app-modal-adicionar-cliente, app-modal-editar-cliente, app-modal-excluir-cliente) {
+	display: contents;
+}
+
+.cliente-modal-backdrop {
+	position: fixed;
+	z-index: 10;
+	inset: 0;
+	display: grid;
+	overflow-y: auto;
+	place-items: center;
+	padding: 20px;
+	background: rgb(29 19 13 / 48%);
+}
+
+.cliente-modal {
+	width: min(100%, 480px);
+	padding: 24px;
+	background: var(--cor-superficie);
+	border: 1px solid var(--cor-borda);
+	border-radius: 6px;
+	box-shadow: 0 16px 50px rgb(29 19 13 / 18%);
+}
+
+.cliente-modal h2 {
+	margin: 0 0 18px;
+	font-family: 'Instrument Serif', Georgia, serif;
+	font-size: 27px;
+	font-weight: 500;
+}
+
+.cliente-modal p {
+	color: var(--cor-texto-suave);
+}
+
+.cliente-modal form {
+	display: grid;
+	gap: 14px;
+}
+
+.cliente-modal label {
+	display: grid;
+	gap: 5px;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.cliente-modal input,
+.cliente-modal select {
+	width: 100%;
+	min-height: 40px;
+	padding: 8px 10px;
+	color: var(--cor-texto);
+	background: #fff;
+	border: 1px solid var(--cor-borda);
+	border-radius: 4px;
+}
+
+.cliente-modal-erro {
+	color: var(--cor-erro);
+	font-size: 11px;
+	font-weight: 400;
+}
+
+.cliente-modal-acoes {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-top: 8px;
+}
+/* ========== */
+
 @media (prefers-reduced-motion: reduce) {
 	* {
 		transition: none !important;
