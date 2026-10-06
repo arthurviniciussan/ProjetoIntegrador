@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DadosCliente, StatusCliente } from '../cliente.model';
+import { DadosCliente, StatusCliente } from '../../../models/cliente.model';
 
 @Component({
   selector: 'app-modal-adicionar-cliente',
