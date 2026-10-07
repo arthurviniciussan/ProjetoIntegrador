@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../../shared/footer/footer';
 import { MenuComponent } from '../../shared/menu/menu';
+import { ClienteService } from '../../services/cliente.service';
+import { Cliente } from '../../models/cliente.model';
 
 @Component({
   selector: 'app-cadastro',
@@ -14,16 +16,18 @@ import { MenuComponent } from '../../shared/menu/menu';
 export class CadastroComponent {
 
 
-  tipo = 'PF';
+  private readonly clienteService = inject(ClienteService);
 
-  // Dados da pessoa
+  tipo: 'PF' | 'PJ' = 'PF';
+
+
   nome = '';
   email = '';
   documento = '';
   celular = '';
   nascimento = '';
 
-  // Endereco
+
   cep = '';
   rua = '';
   numero = '';
@@ -31,7 +35,7 @@ export class CadastroComponent {
   bairro = '';
   cidade = '';
 
-  // Senha
+
   senha = '';
   confirmarSenha = '';
   mostrarSenha = false;
@@ -106,6 +110,27 @@ export class CadastroComponent {
       this.mensagemErro = 'Você precisa aceitar os Termos de Uso.';
       return;
     }
+    const novoCliente: Cliente = {
+      id: Date.now(),
+      nome: this.nome,
+      email: this.email,
+      telefone: this.celular,
+      cadastro: new Date().toLocaleDateString('pt-BR'),
+      status: 'Ativo',
+      tipo: this.tipo,
+      documento: this.documento,
+      nascimento: this.nascimento,
+      endereco: {
+        cep: this.cep,
+        rua: this.rua,
+        numero: this.numero,
+        complemento: this.complemento,
+        bairro: this.bairro,
+        cidade: this.cidade,
+      },
+    };
+
+    this.clienteService.adicionar(novoCliente);
 
     alert('Cadastro realizado com sucesso!');
   }
